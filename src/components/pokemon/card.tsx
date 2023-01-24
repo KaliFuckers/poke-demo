@@ -13,7 +13,7 @@ export default function PokemonCard({ pokemon: { id, img, name } }: Props) {
       key={id}
       className="cardPokemon"
       onClick={() => {
-        router.push(`/pokemon/${id}`);
+        router.push(`/pokemon/${name}`);
       }}
     >
       <Card.Image
@@ -24,7 +24,7 @@ export default function PokemonCard({ pokemon: { id, img, name } }: Props) {
         priority
         full
       />
-      <Card.Body className="px-5 flex flex-row justify-between">
+      <Card.Body className="px-2 flex flex-row justify-between">
         <Card.Title className="capitalize">{name}</Card.Title>
         <h3>#{id}</h3>
       </Card.Body>
