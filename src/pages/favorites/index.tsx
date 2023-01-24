@@ -1,16 +1,35 @@
-import { ReactElement } from 'react';
+import { ReactElement, useState, useEffect } from 'react';
 import { MainLayout } from '@/components/layouts';
-import { Container, NoFavorites } from '@/components/ui';
+import { Container } from '@/components/ui';
+import { getPokemonIdList } from '@/utils';
+import { Favorites, NoFavorites } from '@/components/pokemon';
 import { NextPageWithLayout } from '../_app';
 
-const favoritesPage: NextPageWithLayout = () => (
-  <Container className="flex flex-col h-[calc(100vh_-_80px)] justify-center items-center">
-    <NoFavorites />
-  </Container>
-);
+const FavoritesPage: NextPageWithLayout = () => {
+  const [favorites, setfavorites] = useState<Number[]>([]);
 
-favoritesPage.getLayout = function getLayout(page: ReactElement) {
+  useEffect(() => {
+    setfavorites(getPokemonIdList());
+  }, []);
+
+  return (
+    <Container
+      className={`${
+        !favorites &&
+        'flex flex-col h-[calc(100vh_-_80px)] justify-center items-center'
+      }`}
+    >
+      {favorites.length !== 0 ? (
+        <Favorites favorites={favorites} />
+      ) : (
+        <NoFavorites />
+      )}
+    </Container>
+  );
+};
+
+FavoritesPage.getLayout = function getLayout(page: ReactElement) {
   return <MainLayout title="Favorite - Page">{page}</MainLayout>;
 };
 
-export default favoritesPage;
+export default FavoritesPage;
