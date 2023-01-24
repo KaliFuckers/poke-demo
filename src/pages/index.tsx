@@ -5,18 +5,19 @@ import { MainLayout } from '@/components/layouts';
 import { Pokemon, PokemonResponse } from '@/interfaces';
 import { pokeApi } from '@/services';
 import { PokemonCard } from '@/components/pokemon';
+import { Container } from '@/components/ui';
 import { NextPageWithLayout } from './_app';
 
 const HomePage: NextPageWithLayout<{ pokemons: Pokemon[] }> = ({
   pokemons,
 }) => (
-  <div className="grid grid-cols-1 max-[600px]:bg-sky-300 gap-4 px-4 w-full md:grid-cols-3 lg:grid-cols-4 max-w-6xl mx-auto">
+  <Container className="grid grid-cols-1 max-[600px]:bg-sky-300 gap-4 px-4 md:grid-cols-3 lg:grid-cols-4">
     {pokemons.map((pokemon) => (
       <Link href={`/pokemon/${pokemon.id}`} key={pokemon.id}>
         <PokemonCard pokemon={pokemon} />
       </Link>
     ))}
-  </div>
+  </Container>
 );
 
 HomePage.getLayout = function getLayout(page: ReactElement) {
