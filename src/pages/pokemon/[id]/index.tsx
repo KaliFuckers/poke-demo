@@ -3,12 +3,17 @@ import { Card, LikeButton } from '@/components/ui';
 import { Pokemon, PokemonFullData, PokemonResponse } from '@/interfaces';
 import { NextPageWithLayout } from '@/pages/_app';
 import { pokeApi } from '@/services';
+import { capitalize, toggleFavorite } from '@/utils';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { ReactElement } from 'react';
 
 interface Props {
   pokemon: PokemonFullData;
 }
+
+const handleToggleFavorite = (id: number) => {
+  toggleFavorite(id);
+};
 
 const PokemonPage: NextPageWithLayout<Props> = ({ pokemon }) => (
   <div className="grid gap-4 grid-cols-1 sm:grid-cols-3 px-4 mx-auto max-w-6xl">
@@ -27,7 +32,7 @@ const PokemonPage: NextPageWithLayout<Props> = ({ pokemon }) => (
       <Card.Body className="px-4 py-4 flex justify-between flex-col">
         <Card.Header className="flex justify-between w-full items-center">
           <h1 className="capitalize text-3xl">{pokemon.name}</h1>
-          <LikeButton onClick={() => {}} />
+          <LikeButton onClick={() => handleToggleFavorite(pokemon.id)} />
         </Card.Header>
         <Card.Body className="mt-2">
           <h2 className="text-lg">Sprites</h2>
@@ -64,7 +69,12 @@ const PokemonPage: NextPageWithLayout<Props> = ({ pokemon }) => (
 );
 
 PokemonPage.getLayout = function getLayout(page: ReactElement) {
-  return <MainLayout>{page}</MainLayout>;
+  const {
+    props: {
+      pokemon: { name },
+    },
+  } = page;
+  return <MainLayout title={capitalize(name)}>{page}</MainLayout>;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
