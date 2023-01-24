@@ -11,10 +11,6 @@ interface Props {
   pokemon: PokemonFullData;
 }
 
-const handleToggleFavorite = (id: number) => {
-  toggleFavorite(id);
-};
-
 const PokemonPage: NextPageWithLayout<Props> = ({ pokemon }) => {
   const [isInFavorites, setIsInFavorites] = useState(false);
 
@@ -41,7 +37,10 @@ const PokemonPage: NextPageWithLayout<Props> = ({ pokemon }) => {
             <h1 className="capitalize text-3xl">{pokemon.name}</h1>
             <LikeButton
               isInFavorites={isInFavorites}
-              onClick={() => handleToggleFavorite(pokemon.id)}
+              onClick={(data) => {
+                toggleFavorite(pokemon.id);
+                setIsInFavorites(data);
+              }}
             />
           </Card.Header>
           <Card.Body className="mt-2">
