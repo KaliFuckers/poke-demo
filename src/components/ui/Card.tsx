@@ -10,7 +10,7 @@ function Card(props: PropsWithChildren<HTMLAttributes<HTMLElement>>) {
   return (
     <div
       {...props}
-      className={`drop-shadow-md hover:drop-shadow-lg ${className}`}
+      className={`drop-shadow-md hover:drop-shadow-lg bg-white bg-opacity-5 p-4 rounded-md ${className}`}
     >
       {children}
     </div>
@@ -22,7 +22,7 @@ function Image(props: ImageProps & { full?: boolean }) {
   const removeProp = 'full';
   const { [removeProp]: remove, full, ...renderingProps } = props;
   return (
-    <div className={`relative ${full ? 'h-full' : ''} `}>
+    <div className="relative w-full h-full">
       {}
       <NextImage {...renderingProps} />
     </div>
