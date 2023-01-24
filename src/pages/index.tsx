@@ -13,7 +13,7 @@ const HomePage: NextPageWithLayout<{ pokemons: Pokemon[] }> = ({
 }) => (
   <Container className="grid grid-cols-1 sm:grid-cols-2 gap-4 px-4 md:grid-cols-3 lg:grid-cols-4">
     {pokemons.map((pokemon) => (
-      <Link href={`/pokemon/${pokemon.id}`} key={pokemon.id}>
+      <Link href={`/pokemon/${pokemon.name}`} key={pokemon.id}>
         <PokemonCard pokemon={pokemon} />
       </Link>
     ))}
