@@ -4,7 +4,7 @@
 
 @layer components {
   .cardPokemon {
-    @apply flex flex-col bg-white bg-opacity-5 rounded-lg justify-self-auto mx-auto h-40 w-full cursor-pointer p-4;
+    @apply flex flex-col bg-white bg-opacity-5 rounded-lg justify-self-auto mx-auto h-40 w-full cursor-pointer p-2;
   }
 
   .like-container {
