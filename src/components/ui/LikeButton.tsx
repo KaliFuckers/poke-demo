@@ -3,9 +3,10 @@ import { FiHeart } from 'react-icons/fi';
 
 interface Props {
   onClick: () => void;
+  isInFavorites?: boolean;
 }
 
-export default function LikeButton({ onClick }: Props) {
+export default function LikeButton({ onClick, isInFavorites }: Props) {
   const [hover, setHover] = useState(false);
   const [liked, setliked] = useState(false);
   return (
@@ -22,9 +23,15 @@ export default function LikeButton({ onClick }: Props) {
       className="like-container"
     >
       <FiHeart
-        fill={liked ? '#dc2626' : 'transparent'}
-        style={liked ? { border: 'none' } : {}}
-        color={liked && !hover ? 'transparent' : !liked && hover ? 'white' : ''}
+        fill={liked || isInFavorites ? '#dc2626' : 'transparent'}
+        style={liked || isInFavorites ? { border: 'none' } : {}}
+        color={
+          (liked || isInFavorites) && !hover
+            ? 'transparent'
+            : !liked && hover
+            ? 'white'
+            : ''
+        }
       />
     </div>
   );

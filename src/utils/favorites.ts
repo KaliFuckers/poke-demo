@@ -10,3 +10,11 @@ export const toggleFavorite = (id: number) => {
   }
   localStorage.setItem('favorites', JSON.stringify(favorites));
 };
+
+export const existInFavorites = (id: number): boolean => {
+  const favorites: number[] = JSON.parse(
+    localStorage.getItem('favorites') || '[]',
+  );
+
+  return favorites.includes(id);
+};
