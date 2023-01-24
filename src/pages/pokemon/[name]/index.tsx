@@ -101,21 +101,27 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }));
 
   return {
-    paths: pokemons.map(({ id }) => ({
-      params: { id },
+    paths: pokemons.map(({ name }) => ({
+      params: { name },
     })),
     fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { data } = await pokeApi.get<PokemonFullData>(`/pokemon/${params?.id}`);
+  const { data } = await pokeApi.get<PokemonFullData>(
+    `/pokemon/${params?.name}`,
+  );
 
   // Hay que reducir a lo necesario debido a que nextjs lanza un warning en build time cuando genera las páginas si los datos descargados superan cierto peso
 
   return {
     props: {
-      pokemon: data,
+      pokemon: {
+        name: data.name,
+        id: data.id,
+        sprites: data.sprites,
+      },
     },
   };
 };
