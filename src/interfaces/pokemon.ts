@@ -64,24 +64,24 @@ export interface VersionGroupDetail {
 }
 
 export interface GenerationV {
-  "black-white": Sprites;
+  'black-white': Sprites;
 }
 
 export interface GenerationIv {
-  "diamond-pearl": Sprites;
-  "heartgold-soulsilver": Sprites;
+  'diamond-pearl': Sprites;
+  'heartgold-soulsilver': Sprites;
   platinum: Sprites;
 }
 
 export interface Versions {
-  "generation-i": GenerationI;
-  "generation-ii": GenerationIi;
-  "generation-iii": GenerationIii;
-  "generation-iv": GenerationIv;
-  "generation-v": GenerationV;
-  "generation-vi": { [key: string]: Home };
-  "generation-vii": GenerationVii;
-  "generation-viii": GenerationViii;
+  'generation-i': GenerationI;
+  'generation-ii': GenerationIi;
+  'generation-iii': GenerationIii;
+  'generation-iv': GenerationIv;
+  'generation-v': GenerationV;
+  'generation-vi': { [key: string]: Home };
+  'generation-vii': GenerationVii;
+  'generation-viii': GenerationViii;
 }
 
 export interface Sprites {
@@ -99,7 +99,7 @@ export interface Sprites {
 }
 
 export interface GenerationI {
-  "red-blue": RedBlue;
+  'red-blue': RedBlue;
   yellow: RedBlue;
 }
 
@@ -139,8 +139,8 @@ export interface Gold {
 
 export interface GenerationIii {
   emerald: OfficialArtwork;
-  "firered-leafgreen": Gold;
-  "ruby-sapphire": Gold;
+  'firered-leafgreen': Gold;
+  'ruby-sapphire': Gold;
 }
 
 export interface OfficialArtwork {
@@ -157,7 +157,7 @@ export interface Home {
 
 export interface GenerationVii {
   icons: DreamWorld;
-  "ultra-sun-ultra-moon": Home;
+  'ultra-sun-ultra-moon': Home;
 }
 
 export interface DreamWorld {
@@ -172,7 +172,7 @@ export interface GenerationViii {
 export interface Other {
   dream_world: DreamWorld;
   home: Home;
-  "official-artwork": OfficialArtwork;
+  'official-artwork': OfficialArtwork;
 }
 
 export interface Stat {
@@ -184,4 +184,35 @@ export interface Stat {
 export interface Type {
   slot: number;
   type: Species;
+}
+
+export interface PokemonData {
+  abilities: Ability[];
+  base_experience: number;
+  forms: Species[];
+  game_indices: GameIndex[];
+  height: number;
+  held_items: HeldItem[];
+  id: number;
+  is_default: boolean;
+  location_area_encounters: string;
+  moves: Move[];
+  name: string;
+  order: number;
+  past_types: any[];
+  species: Species;
+  sprites: Sprites;
+  stats: Stat[];
+  types: Type[];
+  weight: number;
+}
+
+export interface HeldItem {
+  item: Species;
+  version_details: VersionDetail[];
+}
+
+export interface VersionDetail {
+  rarity: number;
+  version: Species;
 }
