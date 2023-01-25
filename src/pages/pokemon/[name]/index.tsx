@@ -34,7 +34,9 @@ const PokemonPage: NextPageWithLayout<Props> = ({ pokemon }) => {
       <Card className="flex flex-col bg-white bg-opacity-5 rounded-lg justify-self-auto mx-auto w-full cursor-pointer col-span-2">
         <Card.Body className="px-4 py-4 flex justify-between flex-col">
           <Card.Header className="flex justify-between w-full items-center">
-            <h1 className="capitalize text-3xl">{pokemon.name}</h1>
+            <h1 className="capitalize text-3xl font-medium tracking-wide">
+              {pokemon.name}
+            </h1>
             <LikeButton
               isInFavorites={isInFavorites}
               onClick={(data) => {
@@ -81,10 +83,21 @@ const PokemonPage: NextPageWithLayout<Props> = ({ pokemon }) => {
 PokemonPage.getLayout = function getLayout(page: ReactElement) {
   const {
     props: {
-      pokemon: { name },
+      pokemon: { name, sprites },
     },
   } = page;
-  return <MainLayout title={capitalize(name)}>{page}</MainLayout>;
+  return (
+    <MainLayout
+      metaTags={[
+        { title: 'og:title', content: name },
+        { content: `Información sobre name ${name}`, title: 'og:description' },
+        { content: sprites.front_default, title: 'og:image' },
+      ]}
+      title={capitalize(name)}
+    >
+      {page}
+    </MainLayout>
+  );
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
