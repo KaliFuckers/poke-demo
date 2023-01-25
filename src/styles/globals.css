@@ -4,10 +4,10 @@
 
 @layer components {
   .cardPokemon {
-    @apply flex flex-col bg-white bg-opacity-5 rounded-lg justify-self-auto mx-auto h-40 w-full cursor-pointer p-2;
+    @apply flex flex-col bg-white bg-opacity-5 rounded-lg justify-self-auto mx-auto h-48 w-full cursor-pointer p-2;
   }
 
   .like-container {
-    @apply justify-center p-3 hover:bg-opacity-80 rounded-full relative items-center flex before:content-[''] after:absolute after:h-0 after:w-0 after:bg-violet-600 after:-z-10 after:rounded-full after:transition-all after:duration-200 after:ease-linear after:hover:w-10 after:hover:h-10;
+    @apply justify-center p-3 hover:bg-opacity-80 rounded-full relative items-center flex before:content-[''] after:absolute after:h-0 after:w-0 after:bg-red-600 after:-z-10 after:rounded-full after:transition-all after:duration-200 after:ease-linear after:hover:w-10 after:hover:h-10;
   }
 }
