@@ -6,14 +6,22 @@ import { PropsWithChildren } from 'react';
 import { Navigation } from '../ui';
 
 const MainLayout: NextPage<
-  PropsWithChildren & { title?: string; keywords?: string }
-> = ({ children, title = 'Pokemon App', keywords }) => (
+  PropsWithChildren & {
+    title?: string;
+    keywords?: string;
+    metaTags?: { title: string; content: string }[];
+  }
+> = ({ children, title = 'Pokemon App', keywords, metaTags }) => (
   <>
     <Head>
       <title>{title}</title>
       <meta name="author" content="Shammael" />
       <meta name="description" content="Información del pokemon xxxx" />
       {keywords && <meta name="keywords" content={`${title}, ${keywords}`} />}
+      {metaTags &&
+        metaTags.map((meta) => (
+          <meta key={0} title={meta.title} content={meta.content} />
+        ))}
     </Head>
     <Navigation
       style={{
