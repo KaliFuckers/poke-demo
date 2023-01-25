@@ -13,16 +13,13 @@ const FavoritesPage: NextPageWithLayout = () => {
   }, []);
 
   return (
-    <Container
-      className={`${
-        !favorites &&
-        'flex flex-col h-[calc(100vh_-_80px)] justify-center items-center'
-      }`}
-    >
+    <Container>
       {favorites.length !== 0 ? (
         <Favorites favorites={favorites} />
       ) : (
-        <NoFavorites />
+        <div className="flex flex-col h-[calc(100vh_-_120px)] justify-center items-center">
+          <NoFavorites />
+        </div>
       )}
     </Container>
   );

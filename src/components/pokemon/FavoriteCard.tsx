@@ -22,7 +22,7 @@ export default function FavoriteCard({ id }: Props) {
 
   return pokemon ? (
     <Link href={`/pokemon/${pokemon?.name}`}>
-      <Card className="w-full h-full ">
+      <Card className="w-full h-full" hoverable effect rippleEffect>
         <Card.Image
           src={
             pokemon
@@ -31,7 +31,6 @@ export default function FavoriteCard({ id }: Props) {
           }
           alt={`poke ${pokemon?.name}`}
           fill
-          priority
         />
       </Card>
     </Link>
