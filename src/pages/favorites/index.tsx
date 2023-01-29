@@ -17,7 +17,7 @@ const FavoritesPage: NextPageWithLayout = () => {
       {favorites.length !== 0 ? (
         <Favorites favorites={favorites} />
       ) : (
-        <div className="flex flex-col h-[calc(100vh_-_120px)] justify-center items-center">
+        <div className="flex flex-col h-[calc(100vh_-_120px)] justify-center items-center relative">
           <NoFavorites />
         </div>
       )}
