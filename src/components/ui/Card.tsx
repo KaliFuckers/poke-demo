@@ -41,7 +41,6 @@ function Card(
   const containerRef = useRef<HTMLInputElement>(null);
 
   const handleClick = (e: any) => {
-    // const size = containerRef.current!.offsetWidth;
     const pos = containerRef.current!.getBoundingClientRect();
 
     setcoords({
